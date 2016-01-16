@@ -67,7 +67,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
             var points: [CLLocationCoordinate2D] = self.addBarsToMap();
             var polyline = MKPolyline(coordinates: &points, count: points.count)
             self.map.addOverlay(polyline)
-            
+            self.refreshControl.endRefreshing();
         }
         else {
             dataAccessor!.GetCrawl(crawl!.id, completionBlock: { (error, barCrawl) in
