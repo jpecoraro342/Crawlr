@@ -38,9 +38,9 @@ class BarCrawlProgressView: UIView {
         let width = frame.size.width;
         var barWidth = Double(width - 20);
         
-        self.widthPerBar = barWidth / Double(maxNumberOfBars)
+        self.widthPerBar = barWidth / Double(maxNumberOfBars - 1);
         
-        if (self.numberOfBars < maxNumberOfBars) {
+        if (self.numberOfBars <= maxNumberOfBars) {
             barWidth = widthPerBar * Double(self.numberOfBars - 1);
         }
         
