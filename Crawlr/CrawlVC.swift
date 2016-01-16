@@ -58,24 +58,37 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
     // MARK: Data Updates
     
     func loadBarList() {
-        dataAccessor!.GetCrawl(crawl!.id, completionBlock: { (error, barCrawl) in
-            if (error == nil) {
-                self.crawl = barCrawl!;
-                
-                self.listOfBars = self.crawl!.bars;
-                
-                self.tableView.reloadData();
-                self.map.delegate = self
-                var points: [CLLocationCoordinate2D] = self.addBarsToMap();
-                var polyline = MKPolyline(coordinates: &points, count: points.count)
-                self.map.addOverlay(polyline)
-            }
-            else {
-                //TODO: Handle error on the UI
-            }
+        if globalCrawlAdditions.contains(crawl!) {
+            self.listOfBars = self.crawl!.bars;
             
-            self.refreshControl.endRefreshing();
-        });
+            self.tableView.reloadData();
+            
+            self.map.delegate = self
+            var points: [CLLocationCoordinate2D] = self.addBarsToMap();
+            var polyline = MKPolyline(coordinates: &points, count: points.count)
+            self.map.addOverlay(polyline)
+            
+        }
+        else {
+            dataAccessor!.GetCrawl(crawl!.id, completionBlock: { (error, barCrawl) in
+                if (error == nil) {
+                    self.crawl = barCrawl!;
+                    
+                    self.listOfBars = self.crawl!.bars;
+                    
+                    self.tableView.reloadData();
+                    self.map.delegate = self
+                    var points: [CLLocationCoordinate2D] = self.addBarsToMap();
+                    var polyline = MKPolyline(coordinates: &points, count: points.count)
+                    self.map.addOverlay(polyline)
+                }
+                else {
+                    //TODO: Handle error on the UI
+                }
+                
+                self.refreshControl.endRefreshing();
+            });
+        }
     }
     
     // MARK: UITableViewDataSource
@@ -121,7 +134,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
     // MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120;
+        return 80;
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

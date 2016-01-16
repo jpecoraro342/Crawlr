@@ -23,11 +23,15 @@ struct Location {
     var long: Double;
 }
 
-struct Crawl {
+struct Crawl: Equatable {
     var id: String;
     var name: String;
     var location: Location;
     var creator: String;
     //Presumably sorted by order.
     var bars: [Bar];
+}
+
+func ==(lhs: Crawl, rhs: Crawl) -> Bool {
+    return lhs.name == rhs.name
 }

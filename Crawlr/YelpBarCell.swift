@@ -10,6 +10,9 @@ import UIKit
 
 class YelpBarCell: UITableViewCell {
     @IBOutlet weak var cellBackground: CRCellBackground!
+    @IBOutlet weak var barNameLabel: UILabel!
+    
+    @IBOutlet weak var checkMarkImageView: UILabel!
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         cellBackground.setSelectingState(highlighted);
