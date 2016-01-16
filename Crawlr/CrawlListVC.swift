@@ -12,7 +12,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dataAccessor: ICRDataAccessor = DummyDataAccessor();
+    var dataAccessor: ICRDataAccessor = NodeMongoDataAccessor();
     
     var refreshControl: UIRefreshControl = UIRefreshControl();
     var selectedIndexPath: NSIndexPath?;
