@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, LocationUpdaterDelegate {
+class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, LocationUpdaterDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!;
     @IBOutlet weak var map: MKMapView!;
@@ -65,7 +65,10 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
                 self.listOfBars = self.crawl!.bars;
                 
                 self.tableView.reloadData();
-                self.addBarsToMap();
+                self.map.delegate = self
+                var points: [CLLocationCoordinate2D] = self.addBarsToMap();
+                var polyline = MKPolyline(coordinates: &points, count: points.count)
+                self.map.addOverlay(polyline)
             }
             else {
                 //TODO: Handle error on the UI
@@ -138,22 +141,34 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
     func setupMap() {
         self.map.showsUserLocation = true;
         let initialLocation = User.currentUser.currentLocation;
-        
         centerMapOnLocation(CLLocation(crLocation: (crawl?.location)!));
     }
     
-    func addBarsToMap() {
+    func addBarsToMap() -> [CLLocationCoordinate2D] {
+        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]();
         for bar in listOfBars {
-            print("\(bar.location!.lat)");
-            var location = CLLocationCoordinate2D(
+            let location = CLLocationCoordinate2D(
                 latitude: bar.location!.lat,
                 longitude: bar.location!.long
             );
-            var annotation = MKPointAnnotation()
+            points.append(location);
+            let annotation = MKPointAnnotation()
             annotation.coordinate = location;
             annotation.title = bar.name;
             self.map.addAnnotation(annotation);
         }
+        return points;
+    }
+    
+    func mapView(map: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKPolyline {
+            var polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.orangeColor();
+            polylineRenderer.lineWidth = 5;
+            return polylineRenderer
+        }
+        
+        return nil
     }
     
     func centerMapOnLocation(location: CLLocation) {
