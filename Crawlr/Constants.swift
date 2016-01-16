@@ -48,9 +48,4 @@ let CrawlCellIdentifier = "CrawlCellIdentifier";
 let BarCellIdentifier = "BarCellIdentifier";
 let CreateCrawlBarIdentifier = "CreateCrawlBarIdentifier";
 
-// MARK: Global Crawl Additions
-
-var globalCrawlAdditions = Array<Crawl>();
-
-
 

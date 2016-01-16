@@ -24,6 +24,10 @@ class NodeMongoDataAccessor: NSObject, ICRDataAccessor {
                 var crawls : [Crawl] = [Crawl]();
                 if let JSON = response.result.value {
                     print(JSON);
+                    for crawl in User.currentUser.globalCrawlAdditions {
+                        crawls.append(crawl);
+                    }
+                    
                     for jCrawl in JSON as! Array<Dictionary<String, AnyObject>> {
                         crawls.append(self.parseCrawl(jCrawl));
                     }

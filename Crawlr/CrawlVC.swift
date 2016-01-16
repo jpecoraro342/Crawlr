@@ -58,7 +58,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
     // MARK: Data Updates
     
     func loadBarList() {
-        if globalCrawlAdditions.contains(crawl!) {
+        if User.currentUser.globalCrawlAdditions.contains(crawl!) {
             self.listOfBars = self.crawl!.bars;
             
             self.tableView.reloadData();

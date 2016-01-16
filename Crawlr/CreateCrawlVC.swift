@@ -149,7 +149,7 @@ class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             bars: listOfSelectedBars
         );
         
-        globalCrawlAdditions.append(crawl);
+        User.currentUser.globalCrawlAdditions.append(crawl);
         
         self.navigationController?.popViewControllerAnimated(true);
         

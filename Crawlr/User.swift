@@ -17,6 +17,8 @@ class User : NSObject, CLLocationManagerDelegate {
     
     let locationSubscriber : LocationUpdaterDelegate? = nil;
     
+    var globalCrawlAdditions = Array<Crawl>();
+    
     var id: String?;
     var username: String?;
     var name: String?;
