@@ -9,6 +9,7 @@
 import UIKit
 
 class BarCell: UITableViewCell {
+    @IBOutlet weak var barName: UILabel!
     
     @IBOutlet weak var cellBackground: CRCellBackground!
     
