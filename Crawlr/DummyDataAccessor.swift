@@ -46,30 +46,21 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
                     )
                 ],
                 name : "Dope-Ass Bar Run",
-                creator: User(
-                    username: "randomdud",
-                    name : "Max Fresonke"
-                ),
+                creator: "randomdud",
                 createdDate: NSDate(timeIntervalSince1970: 1452326647)
             ),
             
             Crawl(
                 items: [],
                 name : "Empty-Ass Bar Run",
-                creator: User(
-                    username: "jacobj",
-                    name : "Jacob Jenkins"
-                ),
+                creator: "jacobj",
                 createdDate: NSDate(timeIntervalSince1970: 1452326347)
             ),
             
             Crawl(
                 items: [],
                 name : "I'm Bad At Choosing Bar Run",
-                creator: User(
-                    username: "jpecoraro342",
-                    name : "Joseph Pecoraro"
-                ),
+                creator: "jpecoraro342",
                 createdDate: NSDate(timeIntervalSince1970: 1452326447)
             ),
         ];

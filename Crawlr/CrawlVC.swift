@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!;
+    @IBOutlet weak var map: MKMapView!;
     
     var listOfBars: Array<Bar> = Array<Bar>();
     var crawl: Crawl?;
@@ -36,6 +38,8 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setupRefreshControl();
         self.refreshControl.beginRefreshing();
         loadBarList();
+        
+        setupMap();
     }
     
     // MARK: Refresh Control
@@ -125,4 +129,20 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.selectedIndexPath = indexPath;
         performSegueWithIdentifier("TODO: Insert Identifier", sender: tableView);
     }
+    
+    // Map Stuff
+    
+    func setupMap() {
+        self.map.showsUserLocation = true;
+        let initialLocation = User.currentUser.currentLocation;
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let regionRadius: CLLocationDistance = 1000;
+        
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0);
+        map.setRegion(coordinateRegion, animated: true);
+    }
+    
 }

@@ -28,11 +28,6 @@ struct Crawl {
     //Presumably sorted by order.
     var items: [CrawlItem];
     var name: String;
-    var creator: User;
+    var creator: String;
     var createdDate: NSDate;
-}
-
-struct User {
-    var username: String;
-    var name: String;
 }
