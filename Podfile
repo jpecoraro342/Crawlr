@@ -7,4 +7,3 @@ target 'Crawlr' do
 pod 'Alamofire', '~> 3.0'
 
 end
-

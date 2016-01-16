@@ -14,6 +14,7 @@ class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var selectedIndexPath: NSIndexPath?;
     
     var listOfBars: Array<Bar> = Array<Bar>();
+    var barIsSelected: Array<Bool> = Array<Bool>();
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -36,8 +37,17 @@ class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: Data Updates
     
     func loadBarsFromYelp() {
+//        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
+//            self.businesses = businesses
+//            
+//            for business in businesses {
+//                print(business.name!)
+//                print(business.address!)
+//            }
+//        }
         
         // TODO: Get Bars
+        // TODO: Initialize to false
     }
     
     // MARK: UITableViewDataSource
