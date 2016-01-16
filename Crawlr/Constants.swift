@@ -40,11 +40,17 @@ let navigationBarColor = blue1;
 // MARK: Segues
 
 let CrawlListToCrawl = "CrawlListToCrawl";
+let CrawlListToAddCrawl = "CrawlListToAddCrawl";
 
 // MARK: Reuse Identifiers
 
 let CrawlCellIdentifier = "CrawlCellIdentifier";
 let BarCellIdentifier = "BarCellIdentifier";
+let CreateCrawlBarIdentifier = "CreateCrawlBarIdentifier";
+
+// MARK: Global Crawl Additions
+
+var globalCrawlAdditions = Array<Crawl>();
 
 
 

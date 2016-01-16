@@ -25,10 +25,10 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         self.navigationItem.title = "Bar Crawls";
         
         // TODO: Logout in top Left, Create Meeting in top Right
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutPressed");
+        // let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutPressed");
         let createCrawlButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addCrawl");
         
-        self.navigationItem.leftBarButtonItem = logoutButton;
+        // self.navigationItem.leftBarButtonItem = logoutButton;
         self.navigationItem.rightBarButtonItem = createCrawlButton;
         
         self.tableView.delegate = self;
@@ -124,6 +124,12 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01;
+    }
+    
+    // MARK:
+    
+    func addCrawl() {
+        self.performSegueWithIdentifier(CrawlListToAddCrawl, sender: self);
     }
     
     // MARK:

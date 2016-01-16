@@ -7,47 +7,71 @@
 //
 
 import UIKit
+import Foundation
 
-class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var crawlNameTextField: UITextField!
     
     var selectedIndexPath: NSIndexPath?;
     
     var listOfBars: Array<Bar> = Array<Bar>();
-    var barIsSelected: Array<Bool> = Array<Bool>();
+    var barIsSelected: Dictionary<String, Bool> = Dictionary<String, Bool>();
+    
+    var refreshControl: UIRefreshControl = UIRefreshControl();
     
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        self.navigationItem.title = "Bar Crawls";
+        self.navigationItem.title = "Create Crawl";
         
         // TODO: Logout in top Left, Create Meeting in top Right
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "logoutPressed");
-        let createCrawlButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addCrawl");
+    
+        let createCrawlButton = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: "createCrawl");
         
-        self.navigationItem.leftBarButtonItem = logoutButton;
         self.navigationItem.rightBarButtonItem = createCrawlButton;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
+        setupRefreshControl();
+        self.refreshControl.beginRefreshing();
         loadBarsFromYelp();
+    }
+    
+    // MARK: Refresh Control
+    
+    func setupRefreshControl() {
+        let tableViewController = UITableViewController();
+        tableViewController.tableView = self.tableView;
+        
+        self.refreshControl = UIRefreshControl();
+        self.refreshControl.addTarget(self, action: "loadBarsFromYelp", forControlEvents: UIControlEvents.ValueChanged);
+        
+        tableViewController.refreshControl = self.refreshControl;
     }
     
     // MARK: Data Updates
     
     func loadBarsFromYelp() {
-//        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-//            self.businesses = businesses
-//            
-//            for business in businesses {
-//                print(business.name!)
-//                print(business.address!)
-//            }
-//        }
+        Business.searchWithTerm("Bars", sort: .Distance, categories: nil, deals: false) { (businesses: [Business]!, error: NSError!) -> Void in
+            self.listOfBars = Array<Bar>();
+            self.barIsSelected = Dictionary<String, Bool>();
+            
+            for business in businesses {
+                // print(business.name!)
+                // print(business.address!)
+                
+                let newBar = Bar(id: "none", name: business.name, location: Location(lat: business.latitude!, long: business.longitude!));
+                self.listOfBars.append(newBar);
+                self.barIsSelected.updateValue(false, forKey: newBar.name!);
+            }
+            
+            self.tableView.reloadData();
+        }
         
-        // TODO: Get Bars
-        // TODO: Initialize to false
+        self.refreshControl.endRefreshing();
     }
     
     // MARK: UITableViewDataSource
@@ -80,9 +104,11 @@ class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CrawlCellIdentifier, forIndexPath: indexPath) as! CrawlCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier(CreateCrawlBarIdentifier, forIndexPath: indexPath) as! YelpBarCell;
         
         let bar = listOfBars[indexPath.row];
+        cell.barNameLabel.text = bar.name;
+        cell.checkMarkImageView.hidden = !barIsSelected[bar.name!]!;
         
         return cell;
     }
@@ -90,13 +116,68 @@ class CreateCrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120;
+        return 80;
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true);
         self.selectedIndexPath = indexPath;
-        performSegueWithIdentifier(CrawlListToCrawl, sender: tableView);
+        
+        let bar = listOfBars[indexPath.row];
+        barIsSelected[bar.name!] = !barIsSelected[bar.name!]!;
+        self.tableView.reloadData();
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
+    func createCrawl() {
+        var listOfSelectedBars = Array<Bar>();
+        
+        for bar in self.listOfBars {
+            if (barIsSelected[bar.name!]!) {
+                listOfSelectedBars.append(bar);
+            }
+        }
+        
+        let crawl = Crawl(
+            id: "testID",
+            name : self.crawlNameTextField.text!,
+            location: Location(lat: listOfSelectedBars[0].location!.lat, long: listOfSelectedBars[0].location!.long),
+            creator:  "Anonymous",
+            bars: listOfSelectedBars
+        );
+        
+        globalCrawlAdditions.append(crawl);
+        
+        self.navigationController?.popViewControllerAnimated(true);
+        
+//        let parameters = [
+//            "name": self.crawlNameTextField,
+//            "created" : NSDate(),
+//            "bars": []
+//        ];
+//        
+//        let parameters = [
+//            "name": self.crawlNameTextField,
+//            "created" : NSDate(),
+//            "bars": []
+//        ];
+//
+//        
+//        Alamofire.request(.POST, "https://httpbin.org/post", parameters: parameters) {
+//            
+//        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    @IBAction func textFieldEditingBegin(sender: AnyObject) {
+        
     }
     
     // MARK:

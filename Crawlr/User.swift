@@ -13,6 +13,7 @@ class User : NSObject, CLLocationManagerDelegate {
     static let currentUser = User();
     
     let manager = CLLocationManager();
+    let ucfLocation = CLLocation(latitude: 28.053033, longitude: -82.455330);
     
     let locationSubscriber : LocationUpdaterDelegate? = nil;
     
@@ -86,6 +87,9 @@ class User : NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\(locations)");
         self.currentLocation = locations[0];
+        // self.currentLocation = ucfLocation;
+        
+        // TODO: Change location to UCF Area
         
         if let locDelegate = locationSubscriber {
             locDelegate.didUpdateLocation(self.currentLocation);
