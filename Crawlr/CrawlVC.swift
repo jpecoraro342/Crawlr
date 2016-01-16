@@ -58,11 +58,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if (error == nil) {
                 self.crawl = barCrawl!;
                 
-                self.listOfBars = Array<Bar>();
-                
-                for crawlItem in (self.crawl?.items)! {
-                    self.listOfBars.append(crawlItem.bar);
-                }
+                self.listOfBars = self.crawl!.bars;
                 
                 self.tableView.reloadData();
             }

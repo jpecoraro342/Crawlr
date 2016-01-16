@@ -12,7 +12,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dataAccessor: ICRDataAccessor = DummyDataAccessor();
+    var dataAccessor: ICRDataAccessor = NodeMongoDataAccessor();
     
     var refreshControl: UIRefreshControl = UIRefreshControl();
     var selectedIndexPath: NSIndexPath?;
@@ -105,7 +105,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         cell.crawlName.text = crawl.name;
         cell.crawlAuthor.text = crawl.creator.username;
         
-        cell.setCrawlProgressView(BarCrawlProgressView(frame: CGRectMake(20, cell.frame.height - 40, cell.frame.width - 40, 20), numberOfBars: crawl.items.count));
+        cell.setCrawlProgressView(BarCrawlProgressView(frame: CGRectMake(20, cell.frame.height - 40, cell.frame.width - 40, 20), numberOfBars: crawl.bars.count));
         
         return cell;
     }
