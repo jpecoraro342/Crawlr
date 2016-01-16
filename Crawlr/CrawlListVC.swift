@@ -58,6 +58,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             if (error == nil) {
                 self.listOfBarCrawls = crawlList!;
                 self.tableView.reloadData();
+                
             }
             else {
                 //TODO: Handle error on the UI
@@ -104,7 +105,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         // cell.titleLabel.text = crawl.name;
         // cell.summaryLabel.text = crawl.summary;
         
-        cell.setCrawlProgressView(BarCrawlProgressView(frame: CGRectMake(5, cell.frame.height - 30, cell.frame.width - 10, 10), numberOfBars: crawl.items.count));
+        cell.setCrawlProgressView(BarCrawlProgressView(frame: CGRectMake(20, cell.frame.height - 40, cell.frame.width - 40, 20), numberOfBars: crawl.items.count));
         
         return cell;
     }

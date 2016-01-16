@@ -48,19 +48,26 @@ class BarCrawlProgressView: UIView {
             barWidth = 0;
         }
         
-        let barView = UIView(frame: CGRectMake(10, 3, CGFloat(barWidth), frame.size.height - 6));
+        let barView = UIView(frame: CGRectMake(10, 7, CGFloat(barWidth), frame.size.height - 14));
         barView.backgroundColor = blueLight1;
         
         self.addSubview(barView);
         
         for index in (0..<self.numberOfBars) {
-            self.addSubview(getNode(Double(index)*widthPerBar));
+            self.addSubview(getNode(Double(index)*widthPerBar, displayNum: index));
         }
     }
     
-    func getNode(distance: Double) -> UIView {
-        let node = UIView(frame: CGRectMake(CGFloat(distance), 0, 10, 10));
+    func getNode(distance: Double, displayNum: Int) -> UIView {
+        let node = UIView(frame: CGRectMake(CGFloat(distance), 0, 20, 20));
         node.backgroundColor = blueDark1;
+        
+        let numberLabel = UILabel(frame: CGRectMake(0, 0, 20, 20));
+        numberLabel.text = "\(displayNum)";
+        numberLabel.textAlignment = NSTextAlignment.Center;
+        numberLabel.textColor = offWhiteColor;
+        
+        node.addSubview(numberLabel);
         
         return node;
     }
