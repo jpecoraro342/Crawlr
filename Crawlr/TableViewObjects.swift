@@ -13,7 +13,6 @@ struct Bar: CustomStringConvertible {
     var name: String;
     var lat: Double;
     var long: Double;
-    var url: String;
     
     var description: String {
         return "name: \(name) "
@@ -22,7 +21,7 @@ struct Bar: CustomStringConvertible {
 
 struct CrawlItem {
     var bar: Bar;
-    var intendedTime: NSDateComponents;
+    var intendedTime: NSDate;
 }
 
 struct Crawl {
