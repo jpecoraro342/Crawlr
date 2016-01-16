@@ -128,6 +128,10 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
         //performSegueWithIdentifier("TODO: Insert Identifier", sender: tableView);
     }
     
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
     // Map Stuff
     
     func setupMap() {

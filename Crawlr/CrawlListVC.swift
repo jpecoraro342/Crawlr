@@ -122,6 +122,10 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         performSegueWithIdentifier(CrawlListToCrawl, sender: tableView);
     }
     
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
     // MARK:
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == CrawlListToCrawl {
