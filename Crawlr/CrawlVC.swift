@@ -131,6 +131,16 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setupMap() {
         self.map.showsUserLocation = true;
         let initialLocation = User.currentUser.currentLocation;
+        for bar in listOfBars {
+            var location = CLLocationCoordinate2D(
+                latitude: bar.lat,
+                longitude: bar.long
+            );
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = location;
+            annotation.title = bar.name;
+            self.map.addAnnotation(annotation);
+        }
     }
     
     func centerMapOnLocation(location: CLLocation) {
