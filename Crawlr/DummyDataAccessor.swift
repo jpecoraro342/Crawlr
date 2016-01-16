@@ -54,7 +54,16 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             ),
             
             Crawl(
-                items: [],
+                items: [
+                    CrawlItem(
+                        bar:Bar(name: "Wack A Doo's Grub Brew", lat: 28.605199, long: -81.199551),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370560)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "ANDAIA'S Brazilian Kitchen & Bar", lat: 28.606065, long: -81.209229),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452935943)
+                    )
+                ],
                 name : "Empty-Ass Bar Run",
                 creator: User(
                     username: "jacobj",
@@ -64,7 +73,40 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             ),
             
             Crawl(
-                items: [],
+                items: [
+                    CrawlItem(
+                        bar:Bar(name: "Wack A Doo's Grub Brew", lat: 28.605199, long: -81.199551),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370560)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "ANDAIA'S Brazilian Kitchen & Bar", lat: 28.606065, long: -81.209229),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452935943)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "Bar Louie", lat: 28.598454, long: -81.208328),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370760)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "The Knight's Pub", lat: 28.596344, long: -81.208435),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370260)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "Wack A Doo's Grub Brew", lat: 28.605199, long: -81.199551),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370560)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "ANDAIA'S Brazilian Kitchen & Bar", lat: 28.606065, long: -81.209229),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452935943)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "Bar Louie", lat: 28.598454, long: -81.208328),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370760)
+                    ),
+                    CrawlItem(
+                        bar:Bar(name: "The Knight's Pub", lat: 28.596344, long: -81.208435),
+                        intendedTime: NSDate(timeIntervalSince1970: 1452370260)
+                    )
+                ],
                 name : "I'm Bad At Choosing Bar Run",
                 creator: User(
                     username: "jpecoraro342",
