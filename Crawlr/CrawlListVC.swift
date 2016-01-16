@@ -104,6 +104,8 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         // cell.titleLabel.text = crawl.name;
         // cell.summaryLabel.text = crawl.summary;
         
+        cell.setCrawlProgressView(BarCrawlProgressView(frame: CGRectMake(5, cell.frame.height - 30, cell.frame.width - 10, 10), numberOfBars: crawl.items.count));
+        
         return cell;
     }
     
