@@ -8,18 +8,120 @@
 
 import UIKit
 
-class CrawlVC: UIViewController {
+class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let barList: Array<Bar> = Array<Bar>();
-    let crawl: Crawl = Crawl(items: [], name: "Super Crawl", creator: User(username: "username", name: "name"), createdDate: NSDate());
+    var listOfBars: Array<Bar> = Array<Bar>();
+    var crawl: Crawl?;
+    
+    var dataAccessor: ICRDataAccessor?;
+    
+    var refreshControl: UIRefreshControl = UIRefreshControl();
+    var selectedIndexPath: NSIndexPath?;
     
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        self.navigationController?.title = crawl.name;
+        self.navigationItem.title = "Bar Crawls";
         
+        // TODO: Logout in top Left, Create Meeting in top Right
+        let mapViewButton = UIBarButtonItem(title: "View Map", style: .Plain, target: self, action: "viewMap");
+        
+        self.navigationItem.rightBarButtonItem = mapViewButton;
+        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        
+        setupRefreshControl();
+        self.refreshControl.beginRefreshing();
+        loadBarList();
     }
-
+    
+    // MARK: Refresh Control
+    
+    func setupRefreshControl() {
+        let tableViewController = UITableViewController();
+        tableViewController.tableView = self.tableView;
+        
+        self.refreshControl = UIRefreshControl();
+        self.refreshControl.addTarget(self, action: "loadBarList", forControlEvents: UIControlEvents.ValueChanged);
+        
+        tableViewController.refreshControl = self.refreshControl;
+    }
+    
+    // MARK: Data Updates
+    
+    func loadBarList() {
+        dataAccessor!.GetCrawl("barcrawl1", completionBlock: { (error, barCrawl) in
+            if (error == nil) {
+                self.crawl = barCrawl!;
+                
+                self.listOfBars = Array<Bar>();
+                
+                for crawlItem in (self.crawl?.items)! {
+                    self.listOfBars.append(crawlItem.bar);
+                }
+                
+                self.tableView.reloadData();
+            }
+            else {
+                //TODO: Handle error on the UI
+            }
+            
+            self.refreshControl.endRefreshing();
+        });
+    }
+    
+    // MARK: UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    //    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    //        switch section {
+    //        default:
+    //            return "";
+    //        }
+    //    }
+    
+    //    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    //        return 40;
+    //    }
+    
+    //    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    //        let headerView = ();
+    //        headerView.backgroundColor = tableView.backgroundColor;
+    //        headerView.titleLabel?.text = self.tableView(tableView, titleForHeaderInSection: section);
+    //
+    //        return headerView;
+    //    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listOfBars.count;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CrawlCellIdentifier, forIndexPath: indexPath) as! CrawlCell;
+        
+        let bar = listOfBars[indexPath.row];
+        
+        // cell.titleLabel.text = crawl.name;
+        // cell.summaryLabel.text = crawl.summary;
+        
+        return cell;
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80;
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true);
+        self.selectedIndexPath = indexPath;
+        performSegueWithIdentifier("TODO: Insert Identifier", sender: tableView);
+    }
 }

@@ -13,6 +13,7 @@ import UIKit
 typealias ErrorClosure = (error: NSError?) -> Void;
 typealias BooleanClosure = (success: Bool) -> Void;
 typealias CrawlArrayClosure = (error: NSError?, list: Array<Crawl>?) -> Void;
+typealias CrawlClosure = (error: NSError?, crawl: Crawl?) -> Void;
 typealias BarArrayClosure = (error: NSError?, list: Array<CrawlItem>?) -> Void;
 typealias ImageClosure = (error: NSError?, image: UIImage?) -> Void;
 typealias JsonClosure = (error: NSError?, jsonData: AnyObject?) -> Void;
@@ -39,4 +40,11 @@ let navigationBarColor = blue1;
 // MARK: Segues
 
 let CrawlListToCrawl = "CrawlListToCrawl";
+
+// MARK: Reuse Identifiers
+
+let CrawlCellIdentifier = "CrawlCellIdentifier";
+let BarCellIdentifier = "BarCellIdentifier";
+
+
 

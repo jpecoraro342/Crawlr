@@ -24,7 +24,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
         completionBlock(error: nil, list: crawlsAsArray);
     }
     
-    func GetBarsFromCrawl(crawlId: String, completionBlock: BarArrayClosure) {
+    func GetCrawl(crawlId: String, completionBlock: CrawlClosure) {
         
     }
     

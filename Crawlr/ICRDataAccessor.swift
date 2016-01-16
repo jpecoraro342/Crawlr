@@ -12,7 +12,7 @@ protocol ICRDataAccessor {
     
     // GET
     func GetBarCrawls(completionBlock: CrawlArrayClosure);
-    func GetBarsFromCrawl(crawlId: String, completionBlock: BarArrayClosure);
+    func GetCrawl(crawlId: String, completionBlock: CrawlClosure);
     
     // POST
 

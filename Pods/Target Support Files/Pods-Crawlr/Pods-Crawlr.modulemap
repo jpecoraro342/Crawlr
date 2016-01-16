@@ -1,0 +1,6 @@
+framework module Pods_Crawlr {
+  umbrella header "Pods-Crawlr-umbrella.h"
+
+  export *
+  module * { export * }
+}
