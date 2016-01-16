@@ -133,8 +133,8 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let initialLocation = User.currentUser.currentLocation;
         for bar in listOfBars {
             var location = CLLocationCoordinate2D(
-                latitude: bar.lat,
-                longitude: bar.long
+                latitude: bar.location!.lat,
+                longitude: bar.location!.long
             );
             var annotation = MKPointAnnotation()
             annotation.coordinate = location;
