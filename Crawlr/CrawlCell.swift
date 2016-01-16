@@ -11,7 +11,9 @@ import UIKit
 class CrawlCell: UITableViewCell {
     
     @IBOutlet weak var cellBackground: CRCellBackground!
+    @IBOutlet weak var crawlName: UILabel!
     
+    @IBOutlet weak var crawlAuthor: UILabel!
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         cellBackground.setSelectingState(highlighted);
     }

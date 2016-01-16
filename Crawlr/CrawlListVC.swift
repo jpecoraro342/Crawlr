@@ -101,8 +101,8 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         let crawl = listOfBarCrawls[indexPath.row];
         
-        // cell.titleLabel.text = crawl.name;
-        // cell.summaryLabel.text = crawl.summary;
+        cell.crawlName.text = crawl.name;
+        cell.crawlAuthor.text = crawl.creator.username;
         
         return cell;
     }

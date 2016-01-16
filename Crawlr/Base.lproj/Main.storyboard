@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ebv-ee-jcj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ebv-ee-jcj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -75,6 +75,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellBackground" destination="vpT-Hw-08f" id="cHB-Uh-PqY"/>
+                                            <outlet property="crawlAuthor" destination="Kv3-rg-KU6" id="1OI-X3-A7J"/>
+                                            <outlet property="crawlName" destination="bTb-xo-QjR" id="J3C-Ml-yax"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -145,6 +147,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="barName" destination="GOC-pU-ymD" id="8qR-X7-iwC"/>
                                             <outlet property="cellBackground" destination="7UK-0w-8Wz" id="3vx-Nd-yDD"/>
                                         </connections>
                                     </tableViewCell>
