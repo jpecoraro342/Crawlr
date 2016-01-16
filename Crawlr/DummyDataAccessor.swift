@@ -31,10 +31,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             Crawl(
                 name : "Dope-Ass Bar Run",
                 location: Location(lat: 28.605199, long: -81.199551),
-                creator: User(
-                    username: "randomdud",
-                    name : "Max Fresonke"
-                ),
+                creator: "randomdud",
                 bars: [
                     Bar(id: dummyID, name: "Wack A Doo's Grub Brew", location: Location(lat: 28.605199, long: -81.199551)),
                     Bar(id: dummyID, name: "ANDAIA'S Brazilian Kitchen & Bar", location: Location(lat: 28.606065, long: -81.209229)),
@@ -46,10 +43,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             Crawl(
                 name : "Empty-Ass Bar Run",
                 location: Location(lat: 28.605199, long: -81.199551),
-                creator: User(
-                    username: "jacobj",
-                    name : "Jacob Jenkins"
-                ),
+                creator:  "jacobj",
                 bars: [
                     Bar(id: dummyID, name: "Wack A Doo's Grub Brew", location: Location(lat: 28.605199, long: -81.199551)),
                     Bar(id: dummyID, name: "ANDAIA'S Brazilian Kitchen & Bar", location: Location(lat: 28.606065, long: -81.209229))
@@ -59,10 +53,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             Crawl(
                 name : "I'm Bad At Choosing Bar Run",
                 location: Location(lat: 28.605199, long: -81.199551),
-                creator: User(
-                    username: "jpecoraro342",
-                    name : "Joseph Pecoraro"
-                ),
+                creator: "jpecoraro342",
                 bars: [
                     Bar(id: dummyID, name: "Wack A Doo's Grub Brew", location: Location(lat: 28.605199, long: -81.199551)),
                     Bar(id: dummyID, name: "ANDAIA'S Brazilian Kitchen & Bar", location: Location(lat: 28.606065, long: -81.209229)),

@@ -26,12 +26,7 @@ struct Location {
 struct Crawl {
     var name: String;
     var location: Location;
-    var creator: User;
+    var creator: String;
     //Presumably sorted by order.
     var bars: [Bar];
-}
-
-struct User {
-    var username: String;
-    var name: String?;
 }

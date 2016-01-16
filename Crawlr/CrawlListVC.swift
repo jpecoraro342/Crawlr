@@ -103,7 +103,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let crawl = listOfBarCrawls[indexPath.row];
         
         cell.crawlName.text = crawl.name;
-        cell.crawlAuthor.text = crawl.creator.username;
+        cell.crawlAuthor.text = crawl.creator;
         
         cell.setCrawlProgressView(BarCrawlProgressView(frame: CGRectMake(20, cell.frame.height - 40, cell.frame.width - 40, 20), numberOfBars: crawl.bars.count));
         

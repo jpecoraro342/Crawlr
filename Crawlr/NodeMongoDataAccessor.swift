@@ -43,7 +43,7 @@ class NodeMongoDataAccessor: NSObject, ICRDataAccessor {
                                 lat: firstBar["lat"] as! Double,
                                 long: firstBar["long"] as! Double
                             ),
-                            creator: User(username: creator["username"] as! String, name: nil),
+                            creator: creator["username"] as! String,
                             bars: bars
                         );
                         crawls.append(crawl);
