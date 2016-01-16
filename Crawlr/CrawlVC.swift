@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, LocationUpdaterDelegate {
     
     @IBOutlet weak var tableView: UITableView!;
     @IBOutlet weak var map: MKMapView!;
@@ -123,7 +123,9 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true);
         self.selectedIndexPath = indexPath;
-        performSegueWithIdentifier("TODO: Insert Identifier", sender: tableView);
+        
+        //TODO: Mark item as checked in
+        //performSegueWithIdentifier("TODO: Insert Identifier", sender: tableView);
     }
     
     // Map Stuff
@@ -131,6 +133,8 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setupMap() {
         self.map.showsUserLocation = true;
         let initialLocation = User.currentUser.currentLocation;
+        
+        centerMapOnLocation(CLLocation(crLocation: (crawl?.location)!));
         for bar in listOfBars {
             var location = CLLocationCoordinate2D(
                 latitude: bar.location!.lat,
@@ -149,6 +153,12 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 2.0, regionRadius * 2.0);
         map.setRegion(coordinateRegion, animated: true);
+    }
+    
+    // MARK: Location Updater
+    
+    func didUpdateLocation(newLocation: CLLocation) {
+        // Do Stuff
     }
     
 }

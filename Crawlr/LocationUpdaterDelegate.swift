@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import MapKit
 
-class LocationUpdaterDelegate: NSObject {
-
+protocol LocationUpdaterDelegate {
+    func didUpdateLocation(newLocation: CLLocation);
 }

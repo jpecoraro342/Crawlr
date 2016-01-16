@@ -14,6 +14,8 @@ class User : NSObject, CLLocationManagerDelegate {
     
     let manager = CLLocationManager();
     
+    let locationSubscriber : LocationUpdaterDelegate? = nil;
+    
     var id: String?;
     var username: String?;
     var name: String?;
@@ -84,5 +86,9 @@ class User : NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\(locations)");
         self.currentLocation = locations[0];
+        
+        if let locDelegate = locationSubscriber {
+            locDelegate.didUpdateLocation(self.currentLocation);
+        }
     }
 }

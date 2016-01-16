@@ -28,6 +28,7 @@
 		15D6F4C61C4AA33C00437245 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4C51C4AA33C00437245 /* User.swift */; };
 		15D6F4CA1C4AB3C600437245 /* LocationUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4C91C4AB3C600437245 /* LocationUpdaterDelegate.swift */; };
 		15D6F4CD1C4AB90800437245 /* CreateCrawlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4CC1C4AB90800437245 /* CreateCrawlVC.swift */; };
+		15D6F4CF1C4AC0BB00437245 /* CLLocation+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4CE1C4AC0BB00437245 /* CLLocation+Location.swift */; };
 		D6D592A94CF58CBA78160D32 /* Pods_Crawlr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A1D47A15B1030ABCFD76EE /* Pods_Crawlr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		15D6F4C51C4AA33C00437245 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15D6F4C91C4AB3C600437245 /* LocationUpdaterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationUpdaterDelegate.swift; sourceTree = "<group>"; };
 		15D6F4CC1C4AB90800437245 /* CreateCrawlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCrawlVC.swift; sourceTree = "<group>"; };
+		15D6F4CE1C4AC0BB00437245 /* CLLocation+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Location.swift"; sourceTree = "<group>"; };
 		B3EEF70D06C1C2E94968F36B /* Pods-Crawlr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crawlr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Crawlr/Pods-Crawlr.release.xcconfig"; sourceTree = "<group>"; };
 		B9A1D47A15B1030ABCFD76EE /* Pods_Crawlr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crawlr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF656416BC249BAB8BF67 /* Pods-Crawlr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crawlr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Crawlr/Pods-Crawlr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				15D6F4BB1C4A255800437245 /* NavigationController.swift */,
 				15D6F4911C4A0B3B00437245 /* AppDelegate.swift */,
 				15D6F4B31C4A191B00437245 /* UIColor+Hex.swift */,
+				15D6F4CE1C4AC0BB00437245 /* CLLocation+Location.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				15D6F4B41C4A191B00437245 /* UIColor+Hex.swift in Sources */,
 				15D6F4B21C4A183400437245 /* DummyDataAccessor.swift in Sources */,
 				15D6F4B81C4A21D000437245 /* CrawlCell.swift in Sources */,
+				15D6F4CF1C4AC0BB00437245 /* CLLocation+Location.swift in Sources */,
 				15D6F4C61C4AA33C00437245 /* User.swift in Sources */,
 				15D6F4AA1C4A145A00437245 /* CrawlVC.swift in Sources */,
 				15D6F4C21C4A853A00437245 /* NodeMongoDataAccessor.swift in Sources */,
