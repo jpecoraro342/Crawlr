@@ -58,7 +58,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Data Updates
     
     func loadBarList() {
-        dataAccessor!.GetCrawl("barcrawl1", completionBlock: { (error, barCrawl) in
+        dataAccessor!.GetCrawl(crawl!.id, completionBlock: { (error, barCrawl) in
             if (error == nil) {
                 self.crawl = barCrawl!;
                 

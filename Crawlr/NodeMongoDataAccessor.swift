@@ -11,7 +11,7 @@ import Alamofire
 
 class NodeMongoDataAccessor: NSObject, ICRDataAccessor {
     
-    let baseURL = "https://7db109f2.ngrok.com";
+    let baseURL = "https://32f68be0.ngrok.com";
     
     // GET
     func GetBarCrawls(completionBlock: CrawlArrayClosure) {
@@ -19,34 +19,13 @@ class NodeMongoDataAccessor: NSObject, ICRDataAccessor {
             .responseJSON { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
-                print(response.data)     // server data
+//                print(response.data)     // server data
                 print(response.result)   // result of response serialization
                 var crawls : [Crawl] = [Crawl]();
                 if let JSON = response.result.value {
-                    print("\nJSON: \(JSON)\n")
+                    print(JSON);
                     for jCrawl in JSON as! Array<Dictionary<String, AnyObject>> {
-                        //Extract the firstBar for convienence
-                        let firstBar = jCrawl["firstBar"] as! Dictionary<String, AnyObject>;
-                        //Extract the array of bar IDs and turn them into an array of Bars.
-                        let barIDs = jCrawl["bars"] as! [String];
-                        let creator = jCrawl["creator"] as! Dictionary<String, AnyObject>;
-                        var bars = [Bar]();
-                        for barID in barIDs {
-                            var bar : Bar = Bar(id: barID, name: nil, location: nil);
-                            bar.id = barID;
-                            bars.append(bar);
-                        }
-                        //Create the final crawl object.
-                        let crawl : Crawl = Crawl(
-                            name: jCrawl["name"] as! String,
-                            location: Location(
-                                lat: firstBar["lat"] as! Double,
-                                long: firstBar["long"] as! Double
-                            ),
-                            creator: creator["username"] as! String,
-                            bars: bars
-                        );
-                        crawls.append(crawl);
+                        crawls.append(self.parseCrawl(jCrawl));
                     }
                     completionBlock(error: nil, list: crawls);
                     
@@ -57,17 +36,76 @@ class NodeMongoDataAccessor: NSObject, ICRDataAccessor {
         }
     }
     
+    func idBars(idBars : [String]) -> [Bar] {
+        var bars : [Bar] = [Bar]();
+        for idBar in idBars {
+            let bar = Bar(
+                id: idBar,
+                name: nil,
+                location: nil
+            );
+            bars.append(bar);
+        }
+        return bars;
+    }
+    
+    func fullBars(jBars : [Dictionary<String, AnyObject>]) -> [Bar] {
+        var bars : [Bar] = [Bar]();
+        for jBar in jBars {
+            //check for location
+            let location = parseLocation(jBar);
+            let bar = Bar(
+                id: jBar["_id"] as! String,
+                name: jBar["name"] as? String,
+                location: location
+            );
+            bars.append(bar);
+        }
+        return bars;
+    }
+    
+    func parseCrawl(jCrawl: Dictionary<String, AnyObject>) -> Crawl {
+        var bars : [Bar] = [Bar]();
+        if let idBars = jCrawl["bars"] as? [String] {
+            bars = self.idBars(idBars);
+        } else {
+            bars = self.fullBars(jCrawl["bars"] as! [Dictionary<String, AnyObject>]);
+        }
+        
+        let location = parseLocation(jCrawl["firstBar"] as! Dictionary<String, AnyObject>);
+        let creator = (jCrawl["creator"] as! Dictionary<String, AnyObject>)["username"] as! String;
+        let crawl = Crawl(
+            id: jCrawl["_id"] as! String,
+            name: jCrawl["name"] as! String,
+            location: location!,
+            creator: creator,
+            bars: bars
+        )
+        return crawl;
+    }
+    
+    func parseLocation(json: Dictionary<String, AnyObject>) -> Location? {
+        var location : Location? = nil;
+        if json["lat"] != nil && json["long"] != nil {
+            location = Location(
+                lat: json["lat"] as! Double,
+                long: json["long"] as! Double
+            )
+        }
+        return location;
+    }
+    
     func GetCrawl(crawlId: String, completionBlock: CrawlClosure) {
-        Alamofire.request(.GET, URLStringWithExtension("crawls"), parameters: ["crawlId": crawlId])
+        Alamofire.request(.GET, URLStringWithExtension("crawls/\(crawlId)"))
             .responseJSON { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("\nJSON: \(JSON)\n")
-                    // TODO: Convert into Crawl
+                print(response.result.value)   // result of response serialization
+                print("Crawl ID: \(crawlId)");
+                if let json = response.result.value as? Dictionary<String, AnyObject> {
+                    print("\nJSON: \(json)\n")
+                    completionBlock(error: nil, crawl: self.parseCrawl(json));
                     
                 }
                 else {
