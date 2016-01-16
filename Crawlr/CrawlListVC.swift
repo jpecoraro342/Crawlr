@@ -12,7 +12,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dataAccessor: ICRDataAccessor?;
+    var dataAccessor: ICRDataAccessor = DummyDataAccessor();
     
     var refreshControl: UIRefreshControl = UIRefreshControl();
     var selectedIndexPath: NSIndexPath?;
@@ -54,7 +54,7 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     // MARK: Data Updates
     
     func loadCrawlItems() {
-        dataAccessor!.GetBarCrawls{ (error, crawlList) in
+        dataAccessor.GetBarCrawls{ (error, crawlList) in
             if (error == nil) {
                 self.listOfBarCrawls = crawlList!;
                 self.tableView.reloadData();

@@ -15,7 +15,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var listOfBars: Array<Bar> = Array<Bar>();
     var crawl: Crawl?;
     
-    var dataAccessor: ICRDataAccessor?;
+    var dataAccessor: ICRDataAccessor = DummyDataAccessor();
     
     var refreshControl: UIRefreshControl = UIRefreshControl();
     var selectedIndexPath: NSIndexPath?;
@@ -53,7 +53,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Data Updates
     
     func loadBarList() {
-        dataAccessor!.GetCrawl("barcrawl1", completionBlock: { (error, barCrawl) in
+        dataAccessor.GetCrawl("barcrawl1", completionBlock: { (error, barCrawl) in
             if (error == nil) {
                 self.crawl = barCrawl!;
                 
@@ -103,7 +103,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CrawlCellIdentifier, forIndexPath: indexPath) as! CrawlCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier(BarCellIdentifier, forIndexPath: indexPath) as! BarCell;
         
         let bar = listOfBars[indexPath.row];
         
