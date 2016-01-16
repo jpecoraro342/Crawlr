@@ -119,4 +119,12 @@ class CrawlListVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         performSegueWithIdentifier(CrawlListToCrawl, sender: tableView);
     }
     
+    // MARK:
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == CrawlListToCrawl {
+            let crawlVC = segue.destinationViewController as! CrawlVC;
+            crawlVC.crawl = self.listOfBarCrawls[self.selectedIndexPath!.row];
+            crawlVC.dataAccessor = self.dataAccessor;
+        }
+    }
 }

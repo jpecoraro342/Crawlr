@@ -15,7 +15,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var listOfBars: Array<Bar> = Array<Bar>();
     var crawl: Crawl?;
     
-    var dataAccessor: ICRDataAccessor = DummyDataAccessor();
+    var dataAccessor: ICRDataAccessor?;
     
     var refreshControl: UIRefreshControl = UIRefreshControl();
     var selectedIndexPath: NSIndexPath?;
@@ -23,7 +23,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        self.navigationItem.title = "Bar Crawls";
+        self.navigationItem.title = crawl?.name;
         
         // TODO: Logout in top Left, Create Meeting in top Right
         let mapViewButton = UIBarButtonItem(title: "View Map", style: .Plain, target: self, action: "viewMap");
@@ -40,6 +40,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Refresh Control
     
+    
     func setupRefreshControl() {
         let tableViewController = UITableViewController();
         tableViewController.tableView = self.tableView;
@@ -53,7 +54,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Data Updates
     
     func loadBarList() {
-        dataAccessor.GetCrawl("barcrawl1", completionBlock: { (error, barCrawl) in
+        dataAccessor!.GetCrawl("barcrawl1", completionBlock: { (error, barCrawl) in
             if (error == nil) {
                 self.crawl = barCrawl!;
                 
