@@ -10,24 +10,23 @@ import Foundation
 import MapKit
 
 struct Bar: CustomStringConvertible {
-    var name: String;
-    var lat: Double;
-    var long: Double;
-    
+    var id: String;
+    var name: String?;
+    var location: Location?;
     var description: String {
         return "name: \(name) "
     }
 }
 
-struct CrawlItem {
-    var bar: Bar;
-    var intendedTime: NSDate;
+struct Location {
+    var lat: Double;
+    var long: Double;
 }
 
 struct Crawl {
-    //Presumably sorted by order.
-    var items: [CrawlItem];
     var name: String;
+    var location: Location;
     var creator: String;
-    var createdDate: NSDate;
+    //Presumably sorted by order.
+    var bars: [Bar];
 }

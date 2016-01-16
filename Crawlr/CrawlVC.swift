@@ -62,11 +62,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if (error == nil) {
                 self.crawl = barCrawl!;
                 
-                self.listOfBars = Array<Bar>();
-                
-                for crawlItem in (self.crawl?.items)! {
-                    self.listOfBars.append(crawlItem.bar);
-                }
+                self.listOfBars = self.crawl!.bars;
                 
                 self.tableView.reloadData();
             }
@@ -135,6 +131,16 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setupMap() {
         self.map.showsUserLocation = true;
         let initialLocation = User.currentUser.currentLocation;
+        for bar in listOfBars {
+            var location = CLLocationCoordinate2D(
+                latitude: bar.location!.lat,
+                longitude: bar.location!.long
+            );
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = location;
+            annotation.title = bar.name;
+            self.map.addAnnotation(annotation);
+        }
     }
     
     func centerMapOnLocation(location: CLLocation) {
