@@ -24,6 +24,7 @@ struct Location {
 }
 
 struct Crawl {
+    var id: String;
     var name: String;
     var location: Location;
     var creator: String;

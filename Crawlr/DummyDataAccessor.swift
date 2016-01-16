@@ -29,6 +29,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
     func getCrawls() -> [Crawl] {
         return [
             Crawl(
+                id: dummyID,
                 name : "Dope-Ass Bar Run",
                 location: Location(lat: 28.605199, long: -81.199551),
                 creator: "randomdud",
@@ -41,6 +42,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             ),
             
             Crawl(
+                id: dummyID,
                 name : "Empty-Ass Bar Run",
                 location: Location(lat: 28.605199, long: -81.199551),
                 creator:  "jacobj",
@@ -51,6 +53,7 @@ class DummyDataAccessor: NSObject, ICRDataAccessor {
             ),
             
             Crawl(
+                id: dummyID,
                 name : "I'm Bad At Choosing Bar Run",
                 location: Location(lat: 28.605199, long: -81.199551),
                 creator: "jpecoraro342",
