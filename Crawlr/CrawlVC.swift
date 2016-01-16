@@ -28,9 +28,9 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
         self.navigationItem.title = crawl?.name;
         
         // TODO: Logout in top Left, Create Meeting in top Right
-        let mapViewButton = UIBarButtonItem(title: "View Map", style: .Plain, target: self, action: "viewMap");
+        // let mapViewButton = UIBarButtonItem(title: "View Map", style: .Plain, target: self, action: "viewMap");
         
-        self.navigationItem.rightBarButtonItem = mapViewButton;
+        // self.navigationItem.rightBarButtonItem = mapViewButton;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
