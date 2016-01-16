@@ -63,7 +63,7 @@ class BarCrawlProgressView: UIView {
         node.backgroundColor = blueDark1;
         
         let numberLabel = UILabel(frame: CGRectMake(0, 0, 20, 20));
-        numberLabel.text = "\(displayNum)";
+        numberLabel.text = "\(displayNum + 1)";
         numberLabel.textAlignment = NSTextAlignment.Center;
         numberLabel.textColor = offWhiteColor;
         
