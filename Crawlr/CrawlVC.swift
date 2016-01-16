@@ -65,6 +65,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
                 self.listOfBars = self.crawl!.bars;
                 
                 self.tableView.reloadData();
+                self.addBarsToMap();
             }
             else {
                 //TODO: Handle error on the UI
@@ -139,7 +140,11 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
         let initialLocation = User.currentUser.currentLocation;
         
         centerMapOnLocation(CLLocation(crLocation: (crawl?.location)!));
+    }
+    
+    func addBarsToMap() {
         for bar in listOfBars {
+            print("\(bar.location!.lat)");
             var location = CLLocationCoordinate2D(
                 latitude: bar.location!.lat,
                 longitude: bar.location!.long
