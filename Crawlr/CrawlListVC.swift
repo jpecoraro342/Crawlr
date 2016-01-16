@@ -18,7 +18,6 @@ class CrawlListVC: UIViewController {
         super.viewDidLoad();
         
         self.navigationItem.title = "Bar Crawls";
-
     }
     
 }

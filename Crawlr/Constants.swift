@@ -27,12 +27,16 @@ let blue1 = UIColor(hexString: "0a64a4");
 let blueDark1 = UIColor(hexString: "24577b");
 let blueDark2 = UIColor(hexString: "03406a");
 
+let offWhiteColor = UIColor(hexString: "gggggg");
+
 let buttonNormalColor = blue1;
 let buttonHighlightedColor = blueDark2;
 
 let shadowColor = blueLight1;
 
+let navigationBarColor = blue1;
 
 // MARK: Segues
 
 let CrawlListToCrawl = "CrawlListToCrawl";
+

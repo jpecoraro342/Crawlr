@@ -10,6 +10,8 @@ import UIKit
 
 class CrawlVC: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     let barList: Array<Bar> = Array<Bar>();
     let crawl: Crawl = Crawl(items: [], name: "Super Crawl", creator: User(username: "username", name: "name"), createdDate: NSDate());
     

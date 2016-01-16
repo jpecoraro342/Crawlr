@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		15D6F4921C4A0B3B00437245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4911C4A0B3B00437245 /* AppDelegate.swift */; };
-		15D6F4941C4A0B3B00437245 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4931C4A0B3B00437245 /* ViewController.swift */; };
 		15D6F4971C4A0B3B00437245 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D6F4951C4A0B3B00437245 /* Main.storyboard */; };
 		15D6F4991C4A0B3B00437245 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D6F4981C4A0B3B00437245 /* Assets.xcassets */; };
 		15D6F49C1C4A0B3B00437245 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D6F49A1C4A0B3B00437245 /* LaunchScreen.storyboard */; };
@@ -20,12 +19,14 @@
 		15D6F4B21C4A183400437245 /* DummyDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4B11C4A183400437245 /* DummyDataAccessor.swift */; };
 		15D6F4B41C4A191B00437245 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4B31C4A191B00437245 /* UIColor+Hex.swift */; };
 		15D6F4B61C4A1B9500437245 /* TableViewObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4B51C4A1B9500437245 /* TableViewObjects.swift */; };
+		15D6F4B81C4A21D000437245 /* CrawlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4B71C4A21D000437245 /* CrawlCell.swift */; };
+		15D6F4BA1C4A221A00437245 /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4B91C4A221A00437245 /* BarCell.swift */; };
+		15D6F4BC1C4A255800437245 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F4BB1C4A255800437245 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15D6F48E1C4A0B3B00437245 /* Crawlr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crawlr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D6F4911C4A0B3B00437245 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15D6F4931C4A0B3B00437245 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		15D6F4961C4A0B3B00437245 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15D6F4981C4A0B3B00437245 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D6F49B1C4A0B3B00437245 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,9 @@
 		15D6F4B11C4A183400437245 /* DummyDataAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataAccessor.swift; sourceTree = "<group>"; };
 		15D6F4B31C4A191B00437245 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		15D6F4B51C4A1B9500437245 /* TableViewObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewObjects.swift; sourceTree = "<group>"; };
+		15D6F4B71C4A21D000437245 /* CrawlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrawlCell.swift; sourceTree = "<group>"; };
+		15D6F4B91C4A221A00437245 /* BarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
+		15D6F4BB1C4A255800437245 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,6 @@
 				15D6F4AB1C4A146200437245 /* BarCrawl */,
 				15D6F4A61C4A118E00437245 /* BarCrawlList */,
 				15D6F4A51C4A0D1400437245 /* Utilities */,
-				15D6F4931C4A0B3B00437245 /* ViewController.swift */,
 				15D6F4AC1C4A159100437245 /* CRCellBackground.swift */,
 				15D6F4B51C4A1B9500437245 /* TableViewObjects.swift */,
 				15D6F4951C4A0B3B00437245 /* Main.storyboard */,
@@ -89,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				15D6F4A31C4A0D0300437245 /* Constants.swift */,
+				15D6F4BB1C4A255800437245 /* NavigationController.swift */,
 				15D6F4911C4A0B3B00437245 /* AppDelegate.swift */,
 				15D6F4B31C4A191B00437245 /* UIColor+Hex.swift */,
 			);
@@ -98,6 +102,7 @@
 		15D6F4A61C4A118E00437245 /* BarCrawlList */ = {
 			isa = PBXGroup;
 			children = (
+				15D6F4B71C4A21D000437245 /* CrawlCell.swift */,
 				15D6F4A71C4A11D700437245 /* CrawlListVC.swift */,
 			);
 			name = BarCrawlList;
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				15D6F4A91C4A145A00437245 /* CrawlVC.swift */,
+				15D6F4B91C4A221A00437245 /* BarCell.swift */,
 			);
 			name = BarCrawl;
 			sourceTree = "<group>";
@@ -191,11 +197,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D6F4941C4A0B3B00437245 /* ViewController.swift in Sources */,
+				15D6F4BA1C4A221A00437245 /* BarCell.swift in Sources */,
+				15D6F4BC1C4A255800437245 /* NavigationController.swift in Sources */,
 				15D6F4921C4A0B3B00437245 /* AppDelegate.swift in Sources */,
 				15D6F4B01C4A182800437245 /* ICRDataAccessor.swift in Sources */,
 				15D6F4B41C4A191B00437245 /* UIColor+Hex.swift in Sources */,
 				15D6F4B21C4A183400437245 /* DummyDataAccessor.swift in Sources */,
+				15D6F4B81C4A21D000437245 /* CrawlCell.swift in Sources */,
 				15D6F4AA1C4A145A00437245 /* CrawlVC.swift in Sources */,
 				15D6F4A81C4A11D700437245 /* CrawlListVC.swift in Sources */,
 				15D6F4AD1C4A159100437245 /* CRCellBackground.swift in Sources */,

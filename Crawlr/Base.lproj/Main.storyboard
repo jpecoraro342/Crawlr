@@ -8,7 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="uZT-qE-mDt">
             <objects>
-                <navigationController id="Ebv-ee-jcj" sceneMemberID="viewController">
+                <navigationController id="Ebv-ee-jcj" customClass="NavigationController" customModule="Crawlr" customModuleProvider="target" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CR6-k7-qzz">
@@ -36,14 +36,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="C8F-ff-fDk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="C8F-ff-fDk" customClass="CrawlCell" customModule="Crawlr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C8F-ff-fDk" id="rAx-sg-5oS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" id="vpT-Hw-08f" customClass="RMCellBackground" customModule="Crawlr" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" id="vpT-Hw-08f" customClass="CRCellBackground" customModule="Crawlr" customModuleProvider="target">
                                                     <rect key="frame" x="7" y="10" width="362" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
@@ -77,6 +77,9 @@
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellBackground" destination="vpT-Hw-08f" id="cHB-Uh-PqY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -87,6 +90,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="tableView" destination="8Bt-Rn-3cr" id="7Wp-mr-VsD"/>
                         <segue destination="jtl-c4-Gjo" kind="push" identifier="CrawlListToCrawl" id="sda-U1-aoq"/>
                     </connections>
                 </viewController>
@@ -107,14 +111,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="LlU-Ee-DBx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="LlU-Ee-DBx" customClass="BarCell" customModule="Crawlr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LlU-Ee-DBx" id="3Dx-1F-Lom">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" id="7UK-0w-8Wz" customClass="RMCellBackground" customModule="Crawlr" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" id="7UK-0w-8Wz" customClass="CRCellBackground" customModule="Crawlr" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="11" width="362" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
@@ -148,6 +152,9 @@
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellBackground" destination="7UK-0w-8Wz" id="3vx-Nd-yDD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -157,6 +164,9 @@
                     <navigationItem key="navigationItem" title="Bar Crawls" id="QDb-9m-ozE"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="tableView" destination="YvE-z6-JoE" id="sgS-Jw-1FJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mja-Vj-ELO" sceneMemberID="firstResponder"/>
             </objects>
