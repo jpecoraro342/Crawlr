@@ -176,7 +176,7 @@ class CrawlVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Loc
     func mapView(map: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if overlay is MKPolyline {
             var polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.orangeColor();
+            polylineRenderer.strokeColor = blueLight1;
             polylineRenderer.lineWidth = 5;
             return polylineRenderer
         }
